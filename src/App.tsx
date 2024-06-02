@@ -1,26 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import styles from "./App.module.scss";
+import { AddTask, TodoList } from "./components";
+import { TodoTask } from "./components/todo-task/TodoTask";
 
 function App() {
+  const [todoTasks, setTodoTasks] = useState([
+    { title: "Do react course", desc: "Today!" },
+    { title: "Go gym", desc: "Tommorow.." },
+  ]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main className={styles["app"]}>
+      <AddTask setTodoTasks={setTodoTasks} />
+
+      <TodoList>
+        {todoTasks.map((task) => {
+          return <TodoTask title={task.title} desc={task.desc} />;
+        })}
+      </TodoList>
+    </main>
   );
 }
 
-export default App;
+export { App };

@@ -1,0 +1,12 @@
+.checkbox {
+  display: flex;
+
+  justify-content: flex-end;
+  align-items: center;
+
+  cursor: pointer;
+  user-select: none;
+
+  font-size: 20px;
+  font-weight: 600;
+}
