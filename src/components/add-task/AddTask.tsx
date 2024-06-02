@@ -32,8 +32,10 @@ const AddTask = ({ setTodoTasks }: AddTaskProps) => {
 
   //Reset input values
   function handleResetInput() {
-    setTaskTitle("");
-    setTaskDesc("");
+    if (taskTitle || taskDesc) {
+      setTaskTitle("");
+      setTaskDesc("");
+    }
   }
 
   //Delete all todo tasks
