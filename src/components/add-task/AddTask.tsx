@@ -38,10 +38,13 @@ const AddTask = ({ setTodoTasks }: AddTaskProps) => {
     }
   }
 
-  //Delete all todo tasks
-  function handleDeleteAll() {
+  //Delete checked todo tasks
+  function handleDeleteCheckedTasks() {
     handleResetInput();
-    setTodoTasks([]);
+
+    setTodoTasks((tasks) => {
+      return tasks.filter((task) => !task.isChecked);
+    });
   }
 
   //Input change handling functions
@@ -81,7 +84,7 @@ const AddTask = ({ setTodoTasks }: AddTaskProps) => {
 
         <Button label="Reset inputs" onClick={handleResetInput} />
 
-        <Button label="Delete all todos" onClick={handleDeleteAll} />
+        <Button label="Delete done tasks" onClick={handleDeleteCheckedTasks} />
       </div>
     </div>
   );

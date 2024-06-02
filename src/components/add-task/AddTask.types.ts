@@ -4,6 +4,7 @@ type AddTaskProps = {
       {
         title: string;
         desc: string;
+        isChecked: boolean;
       }[]
     >
   >;

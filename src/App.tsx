@@ -5,8 +5,8 @@ import { TodoTask } from "./components/todo-task/TodoTask";
 
 function App() {
   const [todoTasks, setTodoTasks] = useState([
-    { title: "Do react course", desc: "Today!" },
-    { title: "Go gym", desc: "Tommorow.." },
+    { title: "Do react course", desc: "Today!", isChecked: false },
+    { title: "Go gym", desc: "Tommorow..", isChecked: true },
   ]);
 
   return (
