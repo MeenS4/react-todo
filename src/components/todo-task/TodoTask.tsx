@@ -16,7 +16,11 @@ const TodoTask = ({ title, desc, isChecked, onClick }: TodoTaskProps) => {
         {title}
       </p>
 
-      <p className={styles["todo-task__desc"]}>{desc}</p>
+      <p
+        className={`${styles["todo-task__desc"]} ${isChecked ? styles["todo-task__desc--checked"] : null}`}
+      >
+        {desc}
+      </p>
 
       <Checkbox
         className={styles["todo-task__checkbox"]}
