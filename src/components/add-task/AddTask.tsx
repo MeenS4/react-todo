@@ -16,6 +16,13 @@ const AddTask = ({ setTodoTasks }: AddTaskProps) => {
       desc: string;
     };
   }) {
+    const { title, desc } = newTask;
+
+    //Validate user input
+    if (!title || !desc) {
+      return;
+    }
+
     //Push new task to tasks state
     setTodoTasks((tasks: any) => [...tasks, newTask]);
 
@@ -23,17 +30,19 @@ const AddTask = ({ setTodoTasks }: AddTaskProps) => {
     handleResetInput();
   }
 
+  //Reset input values
   function handleResetInput() {
     setTaskTitle("");
     setTaskDesc("");
   }
 
+  //Delete all todo tasks
   function handleDeleteAll() {
     handleResetInput();
     setTodoTasks([]);
   }
 
-  //?Input change handling functions
+  //Input change handling functions
   function handleTaskTitleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setTaskTitle(e.target.value);
   }
