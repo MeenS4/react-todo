@@ -1,26 +1,15 @@
-import { useState } from "react";
 import { Checkbox } from "../checkbox";
 import styles from "./TodoTask.module.scss";
-import { TodoTaskColorsEnum } from "./TodoTask.types";
+import { TodoTaskProps } from "./TodoTask.types";
 
-const TodoTask = ({
-  title,
-  desc,
-  color,
-}: {
-  title: string;
-  desc: string;
-
-  color?: TodoTaskColorsEnum;
-}) => {
-  const [isChecked, setIsChecked] = useState(false);
-
-  function handleCheckboxToggle() {
-    setIsChecked(!isChecked);
-  }
-
+const TodoTask = ({ title, desc, isChecked, onClick }: TodoTaskProps) => {
   return (
-    <div className={styles["todo-task"]} onClick={handleCheckboxToggle}>
+    <div
+      className={styles["todo-task"]}
+      onClick={() => {
+        onClick({ task: { title, desc, isChecked } });
+      }}
+    >
       <p
         className={`${styles["todo-task__title"]} ${isChecked ? styles["todo-task__title--checked"] : null}`}
       >

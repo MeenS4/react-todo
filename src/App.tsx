@@ -9,13 +9,51 @@ function App() {
     { title: "Go gym", desc: "Tommorow..", isChecked: true },
   ]);
 
+  function handleTaskClick({
+    task,
+  }: {
+    task: {
+      title: string;
+      desc: string;
+      isChecked: boolean;
+    };
+  }) {
+    setTodoTasks((tasks) => {
+      const clickedTaskIndex = tasks.findIndex(
+        (t) => t.title === task.title && t.desc === task.desc
+      );
+
+      if (clickedTaskIndex !== -1) {
+        const updatedTask = {
+          ...tasks[clickedTaskIndex],
+          isChecked: !tasks[clickedTaskIndex].isChecked,
+        };
+
+        const newTasks = [...tasks];
+        newTasks[clickedTaskIndex] = updatedTask;
+
+        return newTasks;
+      }
+
+      return tasks;
+    });
+  }
+
   return (
     <main className={styles["app"]}>
       <AddTask setTodoTasks={setTodoTasks} />
 
       <TodoList>
         {todoTasks.map((task) => {
-          return <TodoTask title={task.title} desc={task.desc} />;
+          return (
+            <TodoTask
+              key={task.title}
+              title={task.title}
+              desc={task.desc}
+              isChecked={task.isChecked}
+              onClick={handleTaskClick}
+            />
+          );
         })}
       </TodoList>
     </main>
